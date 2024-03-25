@@ -1,0 +1,179 @@
+ICD,Description,ICD_flag,group
+2900,"Senile dementia, uncomplicated",9,290
+29010,"Presenile dementia, uncomplicated",9,290
+29011,Presenile dementia with delirium,9,290
+29012,Presenile dementia with delusional features,9,290
+29013,Presenile dementia with depressive features,9,290
+29020,Senile dementia with delusional features,9,290
+29021,Senile dementia with depressive features,9,290
+2903,Senile dementia with delirium,9,290
+29040,"Vascular dementia, uncomplicated",9,290
+29041,"Vascular dementia, with delirium",9,290
+29042,"Vascular dementia, with delusions",9,290
+29043,"Vascular dementia, with depressed mood",9,290
+2908,Other specified senile psychotic conditions,9,290
+2909,Unspecified senile psychotic condition,9,290
+2940,Amnestic disorder in conditions classified elsewhere,9,294
+29410,Dementia in conditions classified elsewhere without behavioral disturbance,9,294
+29411,Dementia in conditions classified elsewhere with behavioral disturbance,9,294
+29420,"Dementia, unspecified, without behavioral disturbance",9,294
+29421,"Dementia, unspecified, with behavioral disturbance",9,294
+2948,Other persistent mental disorders due to conditions classified elsewhere,9,294
+2949,Unspecified persistent mental disorders due to conditions classified elsewhere,9,294
+3310,Alzheimer's disease,9,331
+33111,Pick's disease,9,331
+33119,Other frontotemporal dementia,9,331
+3312,Senile degeneration of brain,9,331
+3313,Communicating hydrocephalus,9,331
+3314,Obstructive hydrocephalus,9,331
+3315,Idiopathic normal pressure hydrocephalus (INPH),9,331
+3316,Corticobasal degeneration,9,331
+3317,Cerebral degeneration in diseases classified elsewhere,9,331
+33181,Reye's syndrome,9,331
+33182,Dementia with lewy bodies,9,331
+33183,"Mild cognitive impairment, so stated",9,331
+33189,Other cerebral degeneration,9,331
+3319,"Cerebral degeneration, unspecified",9,331
+797,Senility without mention of psychosis,9,797
+F01,Vascular dementia,10,F01
+F015,"Vascular dementia, unspecified severity",10,F01
+F0150,"Vascular dementia, unsp severity, without beh/psych/mood/anx",10,F01
+F0151,"Vascular dementia, unsp severity, with behavioral disturb",10,F01
+F01511,"Vascular dementia, unspecified severity, with agitation",10,F01
+F01518,"Vascular dementia, unsp severity, with other beh disturb",10,F01
+F0152,"Vascular dementia, unsp severity, with psychotic disturb",10,F01
+F0153,"Vascular dementia, unspecified severity, with mood disturb",10,F01
+F0154,"Vascular dementia, unspecified severity, with anxiety",10,F01
+F01A,"Vascular dementia, mild",10,F01
+F01A0,"Vascular dementia, mild, without beh/psych/mood/anx",10,F01
+F01A1,"Vascular dementia, mild, with behavioral disturbance",10,F01
+F01A11,"Vascular dementia, mild, with agitation",10,F01
+F01A18,"Vascular dementia, mild, with other behavioral disturbance",10,F01
+F01A2,"Vascular dementia, mild, with psychotic disturbance",10,F01
+F01A3,"Vascular dementia, mild, with mood disturbance",10,F01
+F01A4,"Vascular dementia, mild, with anxiety",10,F01
+F01B,"Vascular dementia, moderate",10,F01
+F01B0,"Vascular dementia, moderate, without beh/psych/mood/anx",10,F01
+F01B1,"Vascular dementia, moderate, with behavioral disturbance",10,F01
+F01B11,"Vascular dementia, moderate, with agitation",10,F01
+F01B18,"Vascular dementia, moderate, with other behavioral disturb",10,F01
+F01B2,"Vascular dementia, moderate, with psychotic disturbance",10,F01
+F01B3,"Vascular dementia, moderate, with mood disturbance",10,F01
+F01B4,"Vascular dementia, moderate, with anxiety",10,F01
+F01C,"Vascular dementia, severe",10,F01
+F01C0,"Vascular dementia, severe, without beh/psych/mood/anx",10,F01
+F01C1,"Vascular dementia, severe, with behavioral disturbance",10,F01
+F01C11,"Vascular dementia, severe, with agitation",10,F01
+F01C18,"Vascular dementia, severe, with other behavioral disturbance",10,F01
+F01C2,"Vascular dementia, severe, with psychotic disturbance",10,F01
+F01C3,"Vascular dementia, severe, with mood disturbance",10,F01
+F01C4,"Vascular dementia, severe, with anxiety",10,F01
+F02,Dementia in other diseases classified elsewhere,10,F02
+F028,"Dementia in other diseases classd elswhr, unsp severity",10,F02
+F0280,"Dem in oth dis classd elswhr,unsp sev,w/o beh/psych/mood/anx",10,F02
+F0281,"Dem in other dis classd elswhr, unsp sev, with beh distrb",10,F02
+F02811,"Dem in other dis classd elswhr, unsp severt, with agitation",10,F02
+F02818,"Dem in oth dis classd elswhr, unsp sev, with oth beh distrb",10,F02
+F0282,"Dem in other dis classd elswhr, unsp sev, with psych distrb",10,F02
+F0283,"Dem in other dis classd elswhr, unsp sev, with mood distrb",10,F02
+F0284,"Dem in other dis classd elswhr, unsp severity, with anxiety",10,F02
+F02A,"Dementia in other diseases classified elsewhere, mild",10,F02
+F02A0,"Dem in other dis classd elswhr, mild, w/o beh/psych/mood/anx",10,F02
+F02A1,"Dem in other diseases classd elswhr, mild, with beh disturb",10,F02
+F02A11,"Dem in other diseases classd elswhr, mild, with agitation",10,F02
+F02A18,"Dem in other dis classd elswhr, mild, with other beh distrb",10,F02
+F02A2,"Dem in other dis classd elswhr, mild, with psych disturb",10,F02
+F02A3,"Dem in other diseases classd elswhr, mild, with mood disturb",10,F02
+F02A4,"Dementia in other diseases classd elswhr, mild, with anxiety",10,F02
+F02B,"Dementia in other diseases classified elsewhere, moderate",10,F02
+F02B0,"Dem in other dis classd elswhr, mod, w/o beh/psych/mood/anx",10,F02
+F02B1,"Dem in other dis classd elswhr, moderate, with beh disturb",10,F02
+F02B11,"Dem in other dis classd elswhr, moderate, with agitation",10,F02
+F02B18,"Dem in other dis classd elswhr, mod, with other beh disturb",10,F02
+F02B2,"Dem in other dis classd elswhr, moderate, with psych disturb",10,F02
+F02B3,"Dem in other dis classd elswhr, moderate, with mood disturb",10,F02
+F02B4,"Dem in other diseases classd elswhr, moderate, with anxiety",10,F02
+F02C,"Dementia in other diseases classified elsewhere, severe",10,F02
+F02C0,"Dem in other dis classd elswhr, sev, w/o beh/psych/mood/anx",10,F02
+F02C1,"Dem in other dis classd elswhr, severe, with beh disturb",10,F02
+F02C11,"Dem in other diseases classd elswhr, severe, with agitation",10,F02
+F02C18,"Dem in other dis classd elswhr, sev, with other beh distrb",10,F02
+F02C2,"Dem in other dis classd elswhr, severe, with psych disturb",10,F02
+F02C3,"Dem in other dis classd elswhr, severe, with mood disturb",10,F02
+F02C4,"Dem in other diseases classd elswhr, severe, with anxiety",10,F02
+F03,Unspecified dementia,10,F03
+F039,"Unspecified dementia, unspecified severity",10,F03
+F0390,"Unsp dementia, unsp severity, without beh/psych/mood/anx",10,F03
+F0391,"Unsp dementia, unspecified severity, with behavioral disturb",10,F03
+F03911,"Unspecified dementia, unspecified severity, with agitation",10,F03
+F03918,"Unsp dementia, unsp severity, with other behavioral disturb",10,F03
+F0392,"Unsp dementia, unspecified severity, with psychotic disturb",10,F03
+F0393,"Unsp dementia, unspecified severity, with mood disturb",10,F03
+F0394,"Unspecified dementia, unspecified severity, with anxiety",10,F03
+F03A,"Unspecified dementia, mild",10,F03
+F03A0,"Unspecified dementia, mild, without beh/psych/mood/anx",10,F03
+F03A1,"Unspecified dementia, mild, with behavioral disturbance",10,F03
+F03A11,"Unspecified dementia, mild, with agitation",10,F03
+F03A18,"Unspecified dementia, mild, with other behavioral disturb",10,F03
+F03A2,"Unspecified dementia, mild, with psychotic disturbance",10,F03
+F03A3,"Unspecified dementia, mild, with mood disturbance",10,F03
+F03A4,"Unspecified dementia, mild, with anxiety",10,F03
+F03B,"Unspecified dementia, moderate",10,F03
+F03B0,"Unspecified dementia, moderate, without beh/psych/mood/anx",10,F03
+F03B1,"Unspecified dementia, moderate, with behavioral disturbance",10,F03
+F03B11,"Unspecified dementia, moderate, with agitation",10,F03
+F03B18,"Unsp dementia, moderate, with other behavioral disturb",10,F03
+F03B2,"Unspecified dementia, moderate, with psychotic disturbance",10,F03
+F03B3,"Unspecified dementia, moderate, with mood disturbance",10,F03
+F03B4,"Unspecified dementia, moderate, with anxiety",10,F03
+F03C,"Unspecified dementia, severe",10,F03
+F03C0,"Unspecified dementia, severe, without beh/psych/mood/anx",10,F03
+F03C1,"Unspecified dementia, severe, with behavioral disturbance",10,F03
+F03C11,"Unspecified dementia, severe, with agitation",10,F03
+F03C18,"Unspecified dementia, severe, with other behavioral disturb",10,F03
+F03C2,"Unspecified dementia, severe, with psychotic disturbance",10,F03
+F03C3,"Unspecified dementia, severe, with mood disturbance",10,F03
+F03C4,"Unspecified dementia, severe, with anxiety",10,F03
+G30,Alzheimer's disease,10,G30
+G300,Alzheimer's disease with early onset,10,G30
+G301,Alzheimer's disease with late onset,10,G30
+G308,Other Alzheimer's disease,10,G30
+G309,"Alzheimer's disease, unspecified",10,G30
+G31,"Oth degenerative diseases of nervous system, NEC",10,G31
+G310,Frontotemporal dementia,10,G31
+G3101,Pick's disease,10,G31
+G3109,Other frontotemporal neurocognitive disorder,10,G31
+G311,"Senile degeneration of brain, not elsewhere classified",10,G31
+G312,Degeneration of nervous system due to alcohol,10,G31
+G318,Other specified degenerative diseases of nervous system,10,G31
+G3180,"Leukodystrophy, unspecified",10,G31
+G3181,Alpers disease,10,G31
+G3182,Leigh's disease,10,G31
+G3183,Neurocognitive disorder with Lewy bodies,10,G31
+G3184,Mild cognitive impairment of uncertain or unknown etiology,10,G31
+G3185,Corticobasal degeneration,10,G31
+G3186,Alexander disease,10,G31
+G3189,Other specified degenerative diseases of nervous system,10,G31
+G319,"Degenerative disease of nervous system, unspecified",10,G31
+R41,Oth symptoms and signs w cognitive functions and awareness,10,R41
+R410,"Disorientation, unspecified",10,R41
+R411,Anterograde amnesia,10,R41
+R412,Retrograde amnesia,10,R41
+R413,Other amnesia,10,R41
+R414,Neurologic neglect syndrome,10,R41
+R418,Oth symptoms and signs w cognitive functions and awareness,10,R41
+R4181,Age-related cognitive decline,10,R41
+R4182,"Altered mental status, unspecified",10,R41
+R4183,Borderline intellectual functioning,10,R41
+R4184,Other specified cognitive deficit,10,R41
+R41840,Attention and concentration deficit,10,R41
+R41841,Cognitive communication deficit,10,R41
+R41842,Visuospatial deficit,10,R41
+R41843,Psychomotor deficit,10,R41
+R41844,Frontal lobe and executive function deficit,10,R41
+R4189,Oth symptoms and signs w cognitive functions and awareness,10,R41
+R419,Unsp symptoms and signs w cognitive functions and awareness,10,R41
+290,Dementias,9,290
+294,Persistent mental disorders due to conditions classified elsewhere,9,294
+331,Other cerebral degenerations,9,331
+797,Senility without mention of psychosis,9,797
