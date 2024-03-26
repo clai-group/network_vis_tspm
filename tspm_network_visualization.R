@@ -149,11 +149,21 @@ corrs_final <- corrs %>%
 ### Dendrogram: requires a df with at least two columns phenotype and CONCEPT_CD -----------
 ## Q: edges color and edges width (frequency of each connection)
 ## ref: https://r-graph-gallery.com/310-custom-hierarchical-edge-bundling.html
+corseq <- as.data.frame(corseq)
+corseq$patient_num <- as.character(corseq$patient_num)
+corseq$sequence <- as.character(corseq$sequence)
+freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>%
+  distinct() %>%
+  dplyr::group_by(startPhen, endPhenx) %>%
+  dplyr::summarise(freq = n_distinct(patient_num))
+
 data_graph <- corrs_final[corrs_final$p.adjust<=0.05, ] %>% 
   dplyr::select (startPhen, endPhenx, rho) %>% 
   dplyr::group_by(startPhen, endPhenx) %>%
   dplyr::summarize(mean_val = mean(rho, na.rm = TRUE), freq=n()) %>% 
   distinct()
+
+data_graph <- merge(data_graph, freq, by.x = c("startPhen", "endPhenx"))
 
 data_graph <- merge(data_graph, phenxlookup, by.x ="startPhen", by.y = "num_Phenx")
 colnames(data_graph)[colnames(data_graph) == 'phenx'] <- 'start'
