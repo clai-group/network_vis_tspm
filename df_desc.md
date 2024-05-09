@@ -11,7 +11,7 @@
 2 Columns: from, to
 
 ### Connect
-3 Columns: from, to, value, freq\
+4 Columns: from, to, value, freq\
 *The value here is mean(rho).\
 *The freq here is the frequency of each sequency.
 
