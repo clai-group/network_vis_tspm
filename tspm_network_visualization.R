@@ -145,6 +145,104 @@ corrs_final <- corrs %>%
   dplyr::summarise_all(mean, na.rm=TRUE)
 
 
+### Initial Vizualisations
+## 1.) TOP N Sequence in unique patients
+
+# Get frequency of sequences from corseq df
+corseq_freq <- corseq %>%
+  group_by(sequence) %>%
+  summarise(frequency = n())
+corseq_freq$sequence <- as.character(corseq_freq$sequence)
+
+# Plot a simple line plot to visualize available sequences' frequency 
+# Data frames with a high number of unique sequences might not visualize well
+ggplot(corseq_freq, aes(x = seq_along(frequency), y = frequency)) +
+  # Add a smooth line
+  geom_line(color = "blue") +
+  # Add labels to axes
+  labs(x = "Sequence", y = "Frequency") +
+  # Add a theme for better appearance
+  theme_minimal()
+
+# Get a data frame with top10k sequences
+top_10000_seq <- corseq_freq %>%
+  arrange(desc(frequency)) %>%
+  head(10000)
+# Get a data frame with top1k sequences
+top_1000_seq <- corseq_freq %>%
+  arrange(desc(frequency)) %>%
+  head(1000)
+
+top_10000_seq <- top_10000_seq[order(-top_10000_seq$frequency), ]
+ggplot(top_10000_seq, aes(x = seq_along(frequency), y = frequency)) +
+  # Add a smooth line
+  geom_line(color = "blue") +
+  # Add labels to axes
+  labs(x = "Sequence", y = "Frequency") +
+  # Add a theme for better appearance
+  theme_minimal()
+
+top_1000_seq <- top_1000_seq[order(-top_1000_seq$frequency), ]
+ggplot(top_1000_seq, aes(x = seq_along(frequency), y = frequency)) +
+  # Add a smooth line
+  geom_line(color = "blue") +
+  # Add labels to axes
+  labs(x = "Sequence", y = "Frequency") +
+  # Add a theme for better appearance
+  ggtitle("TOP N Sequence (Frequency)") +
+  theme_minimal()
+
+## 2.) TOP N Sequence for correlation
+
+data_graph <- corrs_final[corrs_final$p.adjust<=0.05, ] %>% 
+  dplyr::select (startPhen, endPhenx, rho) %>% 
+  dplyr::group_by(startPhen, endPhenx) %>%
+  dplyr::summarize(mean_val = mean(rho, na.rm = TRUE), freq=n()) %>% 
+  distinct()
+
+data_graph <- merge(data_graph, phenxlookup, by.x ="startPhen", by.y = "num_Phenx")
+colnames(data_graph)[colnames(data_graph) == 'phenx'] <- 'start'
+data_graph <- merge(data_graph, phenxlookup, by.x ="endPhenx", by.y = "num_Phenx")
+colnames(data_graph)[colnames(data_graph) == 'phenx'] <- 'end'
+
+# Smooth line plot
+# Order data frame first
+data_graph_rho <- data_graph[order(-data_graph$mean_val), ]
+ggplot(data_graph_rho, aes(x = seq_along(mean_val), y = mean_val)) +
+  # Add a smooth line
+  geom_line(color = "blue") +
+  # Add labels to axes
+  labs(x = "Sequence", y = "Correlation Coefficient") +
+  # Add a theme for better appearance
+  ggtitle("TOP N Sequence (Correlation)") +
+  theme_minimal()
+
+## 3.) TOP N in frequency of ICD Codes
+
+# Create a data frame connect that includes the start and end phenX of each sequence
+connect <- data_graph %>% dplyr::select (start, end, mean_val, freq)
+colnames(connect) <- c('from','to','value', 'freq') 
+
+# Create nodes data frame containing the frequency of each phenX
+c(as.character(connect$from), as.character(connect$to)) %>%
+  as.tibble() %>%
+  group_by(value) %>%
+  dplyr::summarize(n=n()) -> nodes
+
+# Create a barplot from data frame nodes that depicts the frequency of each phenX (ICD Code)
+# Currently does not label Y axis due to too many phenX being present
+nodes <- nodes[order(nodes$n, decreasing = TRUE), ]
+barplot(nodes$n,
+        xlab = "ICD Codes", ylab = "Frequency",
+        main = "Barplot of ICD Codes",
+        las = 2,
+        col = "skyblue",
+        names.arg = rep("", nrow(nodes)))
+
+
+
+
+
 
 ### Dendrogram: requires a df with at least two columns phenotype and CONCEPT_CD -----------
 ## Q: edges color and edges width (frequency of each connection)
@@ -157,21 +255,7 @@ freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>%
   dplyr::group_by(startPhen, endPhenx) %>%
   dplyr::summarise(freq = n_distinct(patient_num))
 
-data_graph <- corrs_final[corrs_final$p.adjust<=0.05, ] %>% 
-  dplyr::select (startPhen, endPhenx, rho) %>% 
-  dplyr::group_by(startPhen, endPhenx) %>%
-  dplyr::summarize(mean_val = mean(rho, na.rm = TRUE), freq=n()) %>% 
-  distinct()
-
 data_graph <- merge(data_graph, freq, by.x = c("startPhen", "endPhenx"))
-
-data_graph <- merge(data_graph, phenxlookup, by.x ="startPhen", by.y = "num_Phenx")
-colnames(data_graph)[colnames(data_graph) == 'phenx'] <- 'start'
-data_graph <- merge(data_graph, phenxlookup, by.x ="endPhenx", by.y = "num_Phenx")
-colnames(data_graph)[colnames(data_graph) == 'phenx'] <- 'end'
-
-connect <- data_graph %>% dplyr::select (start, end, mean_val, freq)
-colnames(connect) <- c('from','to','value', 'freq') 
 
 codes <- unique(c(unique(data_graph$start), unique(data_graph$end)))
 
@@ -188,12 +272,6 @@ d1 <- data.frame(from="origin", to=unique(phen_label$phenotype))
 d2 <- phen_label
 colnames(d2)<- c("from", "to")
 hierarchy <- rbind(d1, d2)
-
-
-c(as.character(connect$from), as.character(connect$to)) %>%
-  as.tibble() %>%
-  group_by(value) %>%
-  dplyr::summarize(n=n()) -> nodes
 
 phe <- phen_label  %>% 
   group_by(phenotype) %>%  dplyr::summarize(n=n())
