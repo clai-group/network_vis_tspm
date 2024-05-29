@@ -164,33 +164,20 @@ ggplot(corseq_freq, aes(x = seq_along(frequency), y = frequency)) +
   # Add a theme for better appearance
   theme_minimal()
 
-# Get a data frame with top10k sequences
-top_10000_seq <- corseq_freq %>%
-  arrange(desc(frequency)) %>%
-  head(10000)
-# Get a data frame with top1k sequences
-top_1000_seq <- corseq_freq %>%
-  arrange(desc(frequency)) %>%
-  head(1000)
+### COMPARISON OF TWO DATASETS PLOT ###
+# Generate random integers for an artifical frequency. Comment out if comparison is not wanted
+# or add code to load in a second data frame containing corss_final/corseq_freq
+corseq_freq$artificial_freq <- abs(round(rnorm(nrow(corseq_freq), mean = 20, sd = 62))) #distribution and parameters are randomly chosen
 
-top_10000_seq <- top_10000_seq[order(-top_10000_seq$frequency), ]
-ggplot(top_10000_seq, aes(x = seq_along(frequency), y = frequency)) +
-  # Add a smooth line
-  geom_line(color = "blue") +
-  # Add labels to axes
-  labs(x = "Sequence", y = "Frequency") +
-  # Add a theme for better appearance
-  theme_minimal()
-
-top_1000_seq <- top_1000_seq[order(-top_1000_seq$frequency), ]
-ggplot(top_1000_seq, aes(x = seq_along(frequency), y = frequency)) +
-  # Add a smooth line
-  geom_line(color = "blue") +
-  # Add labels to axes
-  labs(x = "Sequence", y = "Frequency") +
-  # Add a theme for better appearance
-  ggtitle("TOP N Sequence (Frequency)") +
-  theme_minimal()
+# For two line plots
+# Requires corseq_freq to have a new column called "artificial_freq" containing values from the data frame to compare from 
+ggplot(corseq_freq, aes(x = seq_along(sequence))) + 
+  geom_line(aes(y = frequency, color = "Observed Frequency")) +
+  geom_line(aes(y = artificial_freq, color = "Artificial Frequency")) +
+  labs(title = "Line plots for Frequency of Sequences", y = "Frequency", x = "Sequence") +
+  theme_minimal() +
+  scale_color_manual(name = "Frequency Type", values = c("Observed Frequency" = "blue", "Artificial Frequency" = "red"))
+### END COMPARISON OF TWO DATASETS PLOT ###
 
 ## 2.) TOP N Sequence for correlation
 
@@ -217,6 +204,21 @@ ggplot(data_graph_rho, aes(x = seq_along(mean_val), y = mean_val)) +
   ggtitle("TOP N Sequence (Correlation)") +
   theme_minimal()
 
+### COMPARISON OF TWO DATASETS PLOT ###
+# For two line plots
+# data_graph_rho must contain a column "artificial_mean_val" that contains the mean values of a second data frame
+data_graph_rho$artificial_mean_val <- runif(nrow(data_graph), min = -0.2, max = 1)
+
+# For two line plots
+# data_graph_rho must contain a column "artificial_mean_val" that contains the mean values of a second data frame
+ggplot(data_graph_rho, aes(x = seq_along(mean_val))) + 
+  geom_line(aes(y = mean_val, color = "Observed Correlation Coefficient")) +
+  geom_line(aes(y = artificial_mean_val, color = "Artificial Correlation Coefficient")) +
+  labs(title = "Line plots for Correlation Coefficients") +
+  theme_minimal() +
+  scale_color_manual(name = "Data Set", values = c("Observed Correlation Coefficient" = "blue", "Artificial Correlation Coefficient" = "red"))
+### END COMPARISON OF TWO DATASETS PLOT ###
+
 ## 3.) TOP N in frequency of ICD Codes
 
 # Create a data frame connect that includes the start and end phenX of each sequence
@@ -239,10 +241,17 @@ barplot(nodes$n,
         col = "skyblue",
         names.arg = rep("", nrow(nodes)))
 
+### COMPARISON OF TWO DATASETS PLOT ###
+# Create an artifical variable with the same length of icd codes. Make sure to have the same length when comparing two data sets.
+nodes$n2 <- sample(1:65, size = nrow(nodes), replace = TRUE)
+nodes_long <- pivot_longer(nodes, cols = c(n2, n), names_to = "group", values_to = "frequency")
 
-
-
-
+ggplot(nodes_long, aes(x = value, y = frequency, fill = group)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Bar plots for ICDs of two data sets", x = "ICD Code", y = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+### END COMPARISON OF TWO DATASETS PLOT ###
 
 ### Dendrogram: requires a df with at least two columns phenotype and CONCEPT_CD -----------
 ## Q: edges color and edges width (frequency of each connection)
