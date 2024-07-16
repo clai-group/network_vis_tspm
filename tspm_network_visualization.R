@@ -231,7 +231,7 @@ freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>%
   dplyr::group_by(startPhen, endPhenx) %>%
   dplyr::summarise(freq = n_distinct(patient_num))
 
-num_pt <- n_distinct(corseq$patient_num))
+num_pt <- n_distinct(corseq$patient_num)
 
 nodes <- freq %>% gather(key = "node_type", value = "phenx", startPhen, endphenx) %>%
   group_by(phenx) %>%
