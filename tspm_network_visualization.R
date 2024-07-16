@@ -151,7 +151,7 @@ corrs_final <- corrs %>%
 # Get frequency of sequences from corseq df
 corseq_freq <- corseq %>%
   group_by(sequence) %>%
-  summarise(frequency = n())
+  summarise(frequency = n_distinct(patient_num))
 corseq_freq$sequence <- as.character(corseq_freq$sequence)
 
 # Plot a simple line plot to visualize available sequences' frequency 
@@ -222,19 +222,26 @@ ggplot(data_graph_rho, aes(x = seq_along(mean_val))) +
 ## 3.) TOP N in frequency of ICD Codes
 
 # Create a data frame connect that includes the start and end phenX of each sequence
-connect <- data_graph %>% dplyr::select (start, end, mean_val, freq)
-colnames(connect) <- c('from','to','value', 'freq') 
+corseq <- as.data.frame(corseq)
+corseq$patient_num <- as.character(corseq$patient_num)
+corseq$sequence <- as.character(corseq$sequence)
 
-# Create nodes data frame containing the frequency of each phenX
-c(as.character(connect$from), as.character(connect$to)) %>%
-  as.tibble() %>%
-  group_by(value) %>%
-  dplyr::summarize(n=n()) -> nodes
+freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>% 
+  distinct() %>%
+  dplyr::group_by(startPhen, endPhenx) %>%
+  dplyr::summarise(freq = n_distinct(patient_num))
+
+num_pt <- n_distinct(corseq$patient_num))
+
+nodes <- freq %>% gather(key = "node_type", value = "phenx", startPhen, endphenx) %>%
+  group_by(phenx) %>%
+  dplyr: :summarize(total_frequency = sum(frequency)) %>%
+  mutate(percentage = total_frequency/num_pt* 100)
 
 # Create a barplot from data frame nodes that depicts the frequency of each phenX (ICD Code)
 # Currently does not label Y axis due to too many phenX being present
-nodes <- nodes[order(nodes$n, decreasing = TRUE), ]
-barplot(nodes$n,
+nodes <- nodes[order(nodes$percentage, decreasing = TRUE), ]
+barplot(nodes$percentage,
         xlab = "ICD Codes", ylab = "Frequency",
         main = "Barplot of ICD Codes",
         las = 2,
