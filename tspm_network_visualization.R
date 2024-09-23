@@ -226,16 +226,18 @@ corseq <- as.data.frame(corseq)
 corseq$patient_num <- as.character(corseq$patient_num)
 corseq$sequence <- as.character(corseq$sequence)
 
-freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>% 
-  distinct() %>%
-  dplyr::group_by(startPhen, endPhenx) %>%
-  dplyr::summarise(freq = n_distinct(patient_num))
+#freq <- dplyr::select(corseq, startPhen, endPhenx, patient_num) %>% 
+#  distinct() %>%
+#  dplyr::group_by(startPhen, endPhenx) %>%
+#  dplyr::summarise(freq = n_distinct(patient_num))
 
 num_pt <- n_distinct(corseq$patient_num)
 
-nodes <- freq %>% gather(key = "node_type", value = "phenx", startPhen, endphenx) %>%
+nodes <- corseq %>% dplyr::select( startPhen, endPhenx, patient_num) %>%
+  distinct() %>%
+  gather(key = "node_type", value = "phenx", startPhen, endPhenx) %>%
   group_by(phenx) %>%
-  dplyr: :summarize(total_frequency = sum(frequency)) %>%
+  dplyr::summarize(total_frequency = n_distinct(patient_num)) %>%
   mutate(percentage = total_frequency/num_pt* 100)
 
 # Create a barplot from data frame nodes that depicts the frequency of each phenX (ICD Code)
