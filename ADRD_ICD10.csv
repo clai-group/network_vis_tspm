@@ -1,0 +1,18 @@
+﻿ICD-10 code ,Diagnostic category,Description
+F0150 ,Vascular dementia,"Vascular dementia, unspecified severity, without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety"
+F0151,Vascular dementia,"Vascular dementia, unspecified severity, with behavioral disturbance"
+F0280,Non-specific dementia,"Dementia in other diseases classified elsewhere, unspecified severity, without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety"
+F0281,Non-specific dementia,"Dementia in other diseases classified elsewhere, unspecified severity, with behavioral disturbance"
+F0390,Non-specific dementia,"Unspecified dementia, unspecified severity, without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety"
+F0391,Non-specific dementia,"Unspecified dementia, unspecified severity, with behavioral disturbance"
+G300,Alzheimer's disease,Alzheimer's disease with early onset
+G301,Alzheimer's disease,Alzheimer's disease with late onset
+G308,Alzheimer's disease,Other Alzheimer's disease
+G309,Alzheimer's disease,"Alzheimer's disease, unspecified"
+G3101,Pick's disease,Pick's disease
+G3109,Non-specific dementia,Other frontotemporal neurocognitive disorder
+G311,Non-specific dementia,"Senile degeneration of brain, not elsewhere classified"
+G3183,Neurocognitive disorder,Neurocognitive disorder with Lewy bodies
+G3185,Neurocognitive disorder,Corticobasal degeneration
+G3189,Non-specific dementia,Other specified degenerative diseases of nervous system
+G319,Non-specific dementia,"Degenerative disease of nervous system, unspecified"
